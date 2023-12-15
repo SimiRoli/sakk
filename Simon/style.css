@@ -1,0 +1,23 @@
+#chessboard {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    width: 400px;
+    height: 400px;
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #333;
+}
+
+.cell.white {
+    background-color: #AF804F;
+}
+
+.cell.black {
+    background-color: #DCCCB6;
+}
