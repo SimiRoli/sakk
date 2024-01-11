@@ -1,8 +1,4 @@
-/*
-JavaScript Snake
-First version by Patrick Gillespie - I've since merged in a good number of github pull requests
-http://patorjk.com/games/snake 
-*/
+
 
 /**
 * @module Snake
@@ -78,7 +74,7 @@ SNAKE.Snake = SNAKE.Snake || (function() {
         this.prev = null;
     };
 
-    // this function is adapted from the example at http://greengeckodesign.com/blog/2007/07/get-highest-z-index-in-javascript.html
+    
     function getNextHighestZIndex(myObj) {
         var highestIndex = 0,
             currentIndex = 0,
@@ -109,7 +105,7 @@ SNAKE.Snake = SNAKE.Snake || (function() {
     return function(config) {
 
         if (!config||!config.playingBoard) {return;}
-        if (localStorage.jsSnakeHighScore === undefined) localStorage.setItem('jsSnakeHighScore', 0);
+        if (localStorage.jsSnakeHighScore === undefined) localStorage.setItem('Pont', 0);
 
         // ----- private variables -----
 
@@ -213,7 +209,7 @@ SNAKE.Snake = SNAKE.Snake || (function() {
         function recordScore() {
             var highScore = localStorage.jsSnakeHighScore;
             if (me.snakeLength > highScore) {
-                alert('Congratulations! You have beaten your previous high score, which was ' + highScore + '.');
+                alert('Gratulálok! Sikerült megdönteni az előző rekordodat, ami:  ' + highScore + '.');
                 localStorage.setItem('jsSnakeHighScore', me.snakeLength);
             }
         }
@@ -695,15 +691,15 @@ SNAKE.Board = SNAKE.Board || (function() {
 
             elmAboutPanel = document.createElement("div");
             elmAboutPanel.className = "snake-panel-component";
-            elmAboutPanel.innerHTML = "<a href='http://patorjk.com/blog/software/' class='snake-link'>more patorjk.com apps</a> - <a href='https://github.com/patorjk/JavaScript-Snake' class='snake-link'>source code</a> - <a href='https://www.youtube.com/channel/UCpcCLm9y6CsjHUrCvJHYHUA' class='snake-link'>pat's youtube</a>";
+            elmAboutPanel.innerHTML = "";
 
             elmLengthPanel = document.createElement("div");
             elmLengthPanel.className = "snake-panel-component";
-            elmLengthPanel.innerHTML = "Length: 1";
+            elmLengthPanel.innerHTML = "A kígyó hossza: 1";
 
             elmHighscorePanel = document.createElement("div");
             elmHighscorePanel.className = "snake-panel-component";
-            elmHighscorePanel.innerHTML = "Highscore: " + (localStorage.jsSnakeHighScore || 0);
+            elmHighscorePanel.innerHTML = "Rekord: " + (localStorage.jsSnakeHighScore || 0);
 
             elmWelcome = createWelcomeElement();
             elmTryAgain = createTryAgainElement();
@@ -749,11 +745,11 @@ SNAKE.Board = SNAKE.Board || (function() {
             var welcomeTxt = document.createElement("div");
             var fullScreenText = "";
             if (config.fullScreen) {
-                fullScreenText = "On Windows, press F11 to play in Full Screen mode.";
+                fullScreenText = "Az F11 megnyomásával a teljes képernyő módba lehet átlépni.";
             }
-            welcomeTxt.innerHTML = "JavaScript Snake<p></p>Use the <strong>arrow keys</strong> on your keyboard to play the game. " + fullScreenText + "<p></p>";
+            welcomeTxt.innerHTML = "Nagyon kígyó<p></p>Használd a <strong>nyilakat</strong> a billentyűzeten hogy irányítani tudd a kígyót. " + fullScreenText + "<p></p>";
             var welcomeStart = document.createElement("button");
-            welcomeStart.appendChild(document.createTextNode("Play Game"));
+            welcomeStart.appendChild(document.createTextNode("Játék!"));
             var loadGame = function() {
                 SNAKE.removeEventListener(window, "keyup", kbShortcut, false);
                 tmpElm.style.display = "none";
@@ -782,9 +778,9 @@ SNAKE.Board = SNAKE.Board || (function() {
             tmpElm.className = elmClassName;
 
             var gameEndTxt = document.createElement("div");
-            gameEndTxt.innerHTML = "JavaScript Snake<p></p>" + message + "<p></p>";
+            gameEndTxt.innerHTML = "Nagyon kígyó<p></p>" + message + "<p></p>";
             var gameEndStart = document.createElement("button");
-            gameEndStart.appendChild(document.createTextNode("Play Again?"));
+            gameEndStart.appendChild(document.createTextNode("Új játék?"));
 
             var reloadGame = function () {
                 tmpElm.style.display = "none";
@@ -810,11 +806,11 @@ SNAKE.Board = SNAKE.Board || (function() {
         }
 
         function createTryAgainElement() {
-            return createGameEndElement("You died :(", "sbTryAgain", "snake-try-again-dialog");
+            return createGameEndElement("Meghaltál :(", "sbTryAgain", "snake-try-again-dialog");
         }
 
         function createWinElement() {
-            return createGameEndElement("You win! :D", "sbWin", "snake-win-dialog");
+            return createGameEndElement("Nyertél :D", "sbWin", "snake-win-dialog");
         }
 
         function handleEndCondition(elmDialog) {
@@ -850,7 +846,7 @@ SNAKE.Board = SNAKE.Board || (function() {
         me.resetBoard = function() {
             SNAKE.removeEventListener(elmContainer, "keydown", myKeyListener, false);
             mySnake.reset();
-            elmLengthPanel.innerHTML = "Length: 1";
+            elmLengthPanel.innerHTML = "A kígyó hossza: 1";
             me.setupPlayingField();
         };
         /**
@@ -1048,11 +1044,11 @@ SNAKE.Board = SNAKE.Board || (function() {
         *   or not (false) after the snake eats food.
         */
         me.foodEaten = function() {
-            elmLengthPanel.innerHTML = "Length: " + mySnake.snakeLength;
+            elmLengthPanel.innerHTML = "A kígyó hossza: " + mySnake.snakeLength;
             if (mySnake.snakeLength > localStorage.jsSnakeHighScore)
             {
                 localStorage.setItem("jsSnakeHighScore", mySnake.snakeLength);
-                elmHighscorePanel.innerHTML = "Highscore: " + localStorage.jsSnakeHighScore;
+                elmHighscorePanel.innerHTML = "Rekord: " + localStorage.jsSnakeHighScore;
             }
             if (!myFood.randomlyPlaceFood()) {
                 return false;
