@@ -1,0 +1,11 @@
+desktop es mobilalkalmazas
+Neumann elvu szamitogep: a szamitogep feladata az adatok tarolasa es azon vegzett muvelete
+szamitogep elonye: sok adat tarolas -> nagyon gyorsan vegzi a muveleteket
+tarolo(memoria)- szamitogep az informaciot szamok formajaban tarolja
+2 tranzisztoros bistabil multivibrator kell hogy eltaroljon 1 bitet
+kondenzator elemei 2 db fegyverzet es kozotte szigetelo-dieletrikum
+kvantum szamitogep, binaris szamitogepek, Neaumann elvu szamitogep- kvantum informatikai fizikai* jelenseg fogja tarolni az adatokat
+*szubatomi reszecskek fizikai allapota reprezentalja a 0-1-et
+áram: elektron kiegyenlitesnel jon letre 
+feszultseg: elektron suritese pl akkumulator
+ohm torvenye: I=U/R
